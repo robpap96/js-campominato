@@ -24,6 +24,8 @@ header {
 }
 main {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     margin: auto;
     flex-grow: 1;
 }
@@ -75,4 +77,13 @@ footer {
 }
 .blue__cell {
     background-color: blue;
+}
+.red__cell {
+    background-color: red;
+}
+.w-or-lose {
+
+}
+.text-align-center {
+    text-align: center;
 }
