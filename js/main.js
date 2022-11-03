@@ -1,10 +1,4 @@
-// Consegna
 
-// In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora
-// di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
-// La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti
-// (ovvero quando ha rivelato tutte le celle che non sono bombe).
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 "use strict";
 
 //creo array bombe
@@ -19,8 +13,6 @@ function crea16Bombe(str, range){
         }
         str.push(num);
     }
-    //per deb
-    console.log( "Numeri generati: " + str +", ");
 }
 
 const boardContainer = document.querySelector(".board");
@@ -41,24 +33,31 @@ playButton.addEventListener("click", function(){
             //creo elemento
             const boardCell = document.createElement("div");
             boardCell.innerHTML = i;
-            boardCell.classList.add("board__number");
+            boardCell.classList.add("board__number__facile");
             //aggiungo evento click
             boardCell.addEventListener("click", function() {
                 let num = parseInt(this.innerHTML);
                 if(bombe.includes(num) && cellClick === false){
+
                     this.classList.add("red__cell");
+                    //prova bonus
+                    // for(let i=0; i<=100; i++){
+                    //     if(bombe.includes(bombe[i])){
+
+                    //     }
+                    // }
                     cellClick = true;
                     //prova stampa messaggio
                     const message = document.querySelector(".w-or-l");
-                    message.innerHTML = '<h1 class="text-align-center"> HAI PERSO !!! </h1>';
-                } else if(cellClick === false){
+                    message.innerHTML = `<h1 class="text-align-center"> HAI PERSO !!! <br> il tuo punteggio è di -> ${punteggio}</h1>`;
+                } else if(cellClick === false && punteggio <= 84 ) {
                     this.classList.add("blue__cell");
-                    //deb
+                    punteggio++;
+                } else {
+                    message.innerHTML = `<h1 class="text-align-center"> HAI VINTO !!! `;
                 }
                 
             }); 
-            //punteggio++;
-            //console.log(`il tuo punteggio è di -> ${punteggio}`); 
             //concateno l'elemento
             boardContainer.append(boardCell);
         }
@@ -67,47 +66,87 @@ playButton.addEventListener("click", function(){
     } 
         //MEDIO
         else if(clicked === false && levelSelected === "medio") {
-        boardContainer.classList.remove("display__none");
-        for(let i=1; i<=81; i++){
-            //creo elemento
-            const boardCell = document.createElement("div");
-            boardCell.innerHTML = i;
-            boardCell.classList.add("board__number");
-            //CREO LE BOMBE
+            let punteggio = 0;
+            boardContainer.classList.remove("display__none");
+            let cellClick = false;
             crea16Bombe(bombe, 81);
-            //aggiungo evento click
-            boardCell.addEventListener("click", function() {
-                console.log(this.innerHTML);
-                this.classList.add("blue__cell");
-            });  
-            //concateno l'elemento
-            boardContainer.append(boardCell);
+            for(let i=1; i<=81; i++){
+                //creo elemento
+                const boardCell = document.createElement("div");
+                boardCell.innerHTML = i;
+                boardCell.classList.add("board__number__medio");
+                //aggiungo evento click
+                boardCell.addEventListener("click", function() {
+                    let num = parseInt(this.innerHTML);
+                    if(bombe.includes(num) && cellClick === false){
+    
+                        this.classList.add("red__cell");
+                        //prova bonus
+                        // for(let i=0; i<=81; i++){
+                        //     if(bombe.includes(bombe[i])){
+    
+                        //     }
+                        // }
+                        cellClick = true;
+                        //prova stampa messaggio
+                        const message = document.querySelector(".w-or-l");
+                        message.innerHTML = `<h1 class="text-align-center"> HAI PERSO !!! <br> il tuo punteggio è di -> ${punteggio}</h1>`;
+                    } else if(cellClick === false && punteggio <= 65 ) {
+                        this.classList.add("blue__cell");
+                        punteggio++;
+                    } else {
+                        message.innerHTML = `<h1 class="text-align-center"> HAI VINTO !!! `;
+                    }
+                    
+                });  
+                //concateno l'elemento
+                boardContainer.append(boardCell);
         }
         clicked = true;
 
     } 
         //DIFFICILE
         else if (clicked === false && levelSelected === "difficile") {
-        boardContainer.classList.remove("display__none");
-        for(let i=1; i<=49; i++){
-            //creo elemento
-            const boardCell = document.createElement("div");
-            boardCell.innerHTML = i;
-            boardCell.classList.add("board__number");
-            //CREO LE BOMBE
-            crea16Bombe(bombe, 49);
-            //aggiungo evento click
-            boardCell.addEventListener("click", function() {
-                console.log(this.innerHTML);
-                this.classList.add("blue__cell");
-            });  
-            //concateno l'elemento
-            boardContainer.append(boardCell);
+            let punteggio = 0;
+            boardContainer.classList.remove("display__none");
+            let cellClick = false;
+            crea16Bombe(bombe, 81);
+            for(let i=1; i<=49; i++){
+                //creo elemento
+                const boardCell = document.createElement("div");
+                boardCell.innerHTML = i;
+                boardCell.classList.add("board__number__difficile");
+                //aggiungo evento click
+                boardCell.addEventListener("click", function() {
+                    let num = parseInt(this.innerHTML);
+                    if(bombe.includes(num) && cellClick === false){
+    
+                        this.classList.add("red__cell");
+                        //prova bonus
+                        // for(let i=0; i<=49; i++){
+                        //     if(bombe.includes(bombe[i])){
+    
+                        //     }
+                        // }
+                        cellClick = true;
+                        //prova stampa messaggio
+                        const message = document.querySelector(".w-or-l");
+                        message.innerHTML = `<h1 class="text-align-center"> HAI PERSO !!! <br> il tuo punteggio è di -> ${punteggio}</h1>`;
+                    } else if(cellClick === false && punteggio <= 33 ) {
+                        this.classList.add("blue__cell");
+                        punteggio++;
+                    } else {
+                        message.innerHTML = `<h1 class="text-align-center"> HAI VINTO !!! `;
+                    }
+                    
+                });  
+                //concateno l'elemento
+                boardContainer.append(boardCell);
         }
         clicked = true;
 
     } else {
-        alert("Hai gia creato la board!!");
+        alert("Hai gia creato la board!! Ricarica la pagine per riprovare");
     }   
 });
 

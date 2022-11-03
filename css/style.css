@@ -27,7 +27,7 @@ main {
     flex-wrap: wrap;
     flex-direction: column;
     margin: auto;
-    flex-grow: 1;
+    
 }
 footer {
    padding: 1rem;
@@ -67,13 +67,31 @@ footer {
 .display__none {
     display: none;
 }
-.board__number {
+.board__number__facile {
     display: flex;
     justify-content: center;
     align-items: center;
     width: calc(100% / 10);
     height: calc(100% / 10);
     border: 1px solid black;
+}
+.board__number__medio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+    border: 1px solid black;
+
+}
+.board__number__difficile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+    border: 1px solid black;
+
 }
 .blue__cell {
     background-color: blue;
