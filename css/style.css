@@ -1,0 +1,78 @@
+/********************
+        RESET
+********************/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color:  #7fffd4;
+
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 100px;
+    padding: 20px;
+}
+main {
+    display: flex;
+    margin: auto;
+    flex-grow: 1;
+}
+footer {
+   padding: 1rem;
+   background-color: white;
+}
+.left-header{
+    display: flex;
+    align-items: center;
+}
+.left-header h1{
+    padding-left: 10px;
+}
+.right-header .play-btn {
+    padding: 5px 60px;
+    border-radius: 8px;
+    background-color: lightgrey;
+
+}
+.right-header select {
+    padding: 5px 60px;
+    border-radius: 8px;
+    background-color: lightgrey;
+}
+.right-header label {
+    font-size: 20px;
+}
+
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 31.25rem;
+    width: 31.25rem;
+    margin: auto;
+}
+.display__none {
+    display: none;
+}
+.board__number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 1px solid black;
+}
+.blue__cell {
+    background-color: blue;
+}
